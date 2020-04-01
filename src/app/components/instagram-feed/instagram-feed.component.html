@@ -1,0 +1,69 @@
+<div>
+    <form [formGroup]="feedForm" (ngSubmit)="onSubmit(feedForm.value)">
+        <div>
+            <label for="accessToken">
+                Access Token
+            </label>
+            <input id="accessToken" type="text" formControlName="accessToken">
+        </div>
+        <div>
+            <label for="clientId">
+                Client Id
+            </label>
+            <input id="clientId" type="text" formControlName="clientId">
+        </div>
+        <div>
+            <label for="userId">
+                User Id
+            </label>
+            <input id="userId" type="text" formControlName="userId">
+        </div>
+        <div>
+            <label for="locationId">
+                Location Id
+            </label>
+            <input id="locationId" type="text" formControlName="locationId">
+        </div>
+        <div>
+            <label for="tagName">
+                Tag Name
+            </label>
+            <input id="tagName" type="text" formControlName="tagName">
+        </div>
+        <div>
+            <label for="get">
+                Get Type
+            </label>
+            <select id="get" formControlName="get">
+                <option value="user">User</option>
+                <option value="popular">Popular</option>
+            </select>
+        </div>
+        <div>
+            <label for="resolution">
+                Image Resolution
+            </label>
+            <select id="resolution" formControlName="resolution">
+                <option value="standard_resolution">Standard Resolution</option>
+                <option value="low_resolution">Low Resolution</option>
+                <option value="thumbnail">Thumbnail</option>
+            </select>
+        </div>
+        <div>
+            <label for="sortBy">
+                Sort By
+            </label>
+            <select id="sortBy" formControlName="sortBy">
+                <option value="none">None</option>
+                <option value="least-commented">Least Commented</option>
+                <option value="least-liked">Least Liked</option>
+                <option value="least-recent">Least Recent</option>
+                <option value="most-commented">Most Commented</option>
+                <option value="most-liked">Most Liked</option>
+                <option value="most-recent">Most Recent</option>
+                <option value="random">Random</option>
+            </select>
+        </div>
+        <button class="button" type="submit">Submit</button>
+    </form>
+</div>
