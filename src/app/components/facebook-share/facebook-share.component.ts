@@ -33,7 +33,8 @@ export class FacebookShareComponent implements OnInit {
   }
 
   onSubmit(formData){
-    this.fbSdkService.setMetaTags(formData);
+    console.log('Update Meta Tags: ', formData);
+    this.fbSdkService.updateShareMetaTags(formData);
   }
 
 }
