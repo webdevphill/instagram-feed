@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina|Bowlby+One+SC|Righteous|Viga&display=swap');
+
+body {
+    font-family: 'Viga', sans-serif;
+    color: #666666;
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Viga', sans-serif;
+    color: #666666;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+a {
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: #666666;;
+
+    &:hover {
+        text-decoration: underline solid;
+    }
+}
+
+.app-root {
+    display: flex;
+}

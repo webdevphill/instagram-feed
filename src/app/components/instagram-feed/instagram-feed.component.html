@@ -1,36 +1,37 @@
-<div>
+<div class="settings-form">
+    <h2>Instagram Basic API Sample</h2>
     <form [formGroup]="feedForm" (ngSubmit)="onSubmit(feedForm.value)">
-        <div>
+        <div class="input-group">
             <label for="accessToken">
                 Access Token
             </label>
             <input id="accessToken" type="text" formControlName="accessToken">
         </div>
-        <div>
+        <div class="input-group">
             <label for="clientId">
                 Client Id
             </label>
             <input id="clientId" type="text" formControlName="clientId">
         </div>
-        <div>
+        <div class="input-group">
             <label for="userId">
                 User Id
             </label>
             <input id="userId" type="text" formControlName="userId">
         </div>
-        <div>
+        <div class="input-group">
             <label for="locationId">
                 Location Id
             </label>
             <input id="locationId" type="text" formControlName="locationId">
         </div>
-        <div>
+        <div class="input-group">
             <label for="tagName">
                 Tag Name
             </label>
             <input id="tagName" type="text" formControlName="tagName">
         </div>
-        <div>
+        <div class="input-group">
             <label for="get">
                 Get Type
             </label>
@@ -39,7 +40,7 @@
                 <option value="popular">Popular</option>
             </select>
         </div>
-        <div>
+        <div class="input-group">
             <label for="resolution">
                 Image Resolution
             </label>
@@ -49,7 +50,7 @@
                 <option value="thumbnail">Thumbnail</option>
             </select>
         </div>
-        <div>
+        <div class="input-group">
             <label for="sortBy">
                 Sort By
             </label>

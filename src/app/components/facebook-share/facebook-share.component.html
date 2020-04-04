@@ -1,0 +1,62 @@
+<div class="settings-form">
+    <h2>Facebook Share Meta Tag Settings</h2>
+    <form [formGroup]="shareForm" (ngSubmit)="onSubmit(shareForm.value)">
+        <div class="input-group">
+            <label for="fbAppId">
+                Facebook App Id
+            </label>
+            <input id="fbAppId" type="text" formControlName="fbAppId">
+        </div>
+        <div class="input-group">
+            <label for="ogType">
+                Type
+            </label>
+            <input id="ogType" type="text" formControlName="ogType">
+        </div>
+        <div class="input-group">
+            <label for="ogTitle">
+                Title
+            </label>
+            <input id="ogTitle" type="text" formControlName="ogTitle">
+        </div>
+        <div class="input-group">
+            <label for="ogDescription">
+                Description
+            </label>
+            <input id="ogDescription" type="text" formControlName="ogDescription">
+        </div>
+        <div class="input-group">
+            <label for="ogImage">
+                Image
+            </label>
+            <input id="ogImage" type="text" formControlName="ogImage">
+        </div>
+        <div class="input-group">
+            <label for="ogImageAlt">
+                Image
+            </label>
+            <input id="ogImageAlt" type="text" formControlName="ogImageAlt">
+        </div>
+        <!-- <h2>Share Button Settings</h2>
+        <div class="input-group">
+            <label for="dataShare">
+                Data Share
+            </label>
+            <input id="dataShare" type="text" formControlName="dataShare">
+        </div>
+        <div class="input-group">
+            <label for="dataWidth">
+                Data Width
+            </label>
+            <input id="dataWidth" type="number" formControlName="dataWidth">
+        </div>
+        <div class="input-group">
+            <label for="dataShowFaces">
+                Data Show Faces
+            </label>
+            <input id="dataShowFaces" type="text" formControlName="dataShowFaces">
+        </div> -->
+        <button class="button" type="submit">Set Meta Data</button>
+    </form>
+    <div *ngIf="fbShareData.showShare" class="fb-like" [attr.data-share]="fbShareData.dataShare" [attr.data-width]="fbShareData.dataWidth" [attr.data-show-faces]="fbShareData.dataShowFaces"></div>
+</div>

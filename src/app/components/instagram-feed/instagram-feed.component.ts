@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { environment } from 'src/environments/environment';
 import { FeedOptions } from 'src/app/models/feed-options.model';
 import { InstagramFeedService } from 'src/app/services/instagram-feed.service';
 

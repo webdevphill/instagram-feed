@@ -1,0 +1,48 @@
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    margin: 0 auto;
+
+    form{
+        width: 100%;
+        margin: 0 auto 20px auto;
+        border-top: 2px solid #e6e6e6;
+        border-right: 2px solid #e6e6e6;
+        padding: 30px 30px 10px 15px;
+        border-radius: 0 3.75rem 0 0;
+
+        .input-group{
+            display: flex;
+            width: 100%;
+            label{
+                margin: 5px;
+                width: 30%;
+                padding: 5px;
+            }
+            input, select{
+                font-size: 1.1rem;
+                margin: 5px;
+                width: 70%;
+                border: 1px solid #e6e6e6;
+                box-sizing: border-box;
+                padding: 5px;
+            }
+        }
+
+        button{
+            display: flex;
+            font-size: 1.125rem;
+            margin: 5px 5px 5px auto;
+            border: 1px solid #e6e6e6;
+            border-radius: 0 0 0.75rem 0;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.5s ease-out;
+
+            &:active{
+                background-color: #666666 ;
+            }
+        }
+    }
+}
