@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FacebookSdk } from '../../models/facebook-sdk.model';
+import { FacebookSdkService } from 'src/app/services/facebook-sdk.service';
 
 @Component({
   selector: 'app-facebook-sdk',
@@ -16,7 +17,7 @@ export class FacebookSdkComponent implements OnInit {
     status: true,
     xfbml: true
 }
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private fbSdkService: FacebookSdkService, private formBuilder: FormBuilder) {
     this.sdkForm = this.formBuilder.group(this.fbSdkData);
    }
 
@@ -25,6 +26,6 @@ export class FacebookSdkComponent implements OnInit {
   
   onSubmit(formData) {
     console.log('SDK data: ', formData);
+    this.fbSdkService.addSDK(formData);
   }
-
 }
