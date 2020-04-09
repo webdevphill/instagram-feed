@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { FacebookShare } from '../models/facebook-share.model';
 import { FacebookSdk } from '../models/facebook-sdk.model';
+import { BehaviorSubject } from 'rxjs';
+import { FacebookMeta } from '../models/facebook-meta.model';
 
 declare const FB;
 
@@ -10,9 +11,11 @@ declare const FB;
 })
 export class FacebookSdkService {
 
+  sdkInitialised: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   constructor(private metaService: Meta) { }
 
-  updateShareMetaTags(shareData: FacebookShare) {
+  updateShareMetaTags(shareData: FacebookMeta) {
     this.metaService.updateTag({ property: 'fb:app_id', content: shareData.fbAppId });
     this.metaService.updateTag({ property: 'og:url', content: shareData.ogUrl });
     this.metaService.updateTag({ property: 'og:type', content: shareData.ogType });
@@ -23,28 +26,40 @@ export class FacebookSdkService {
   }
 
   addSDK(scriptData: FacebookSdk) {
-    let scriptElement, appRoot = document.getElementsByTagName('app-root')[0];
-    scriptElement = document.createElement("script");
+    if (!this.sdkInitialised.value) {
+      try {
+        const appRoot = document.getElementsByTagName('app-root')[0];
+        const scriptElement = document.createElement("script");
 
-    scriptElement.src = 'https://connect.facebook.net/en_US/sdk.js';
-    scriptElement.id = 'facebook-jssdk';
-    scriptElement.async = true;
-    scriptElement.defer = true;
+        scriptElement.src = 'https://connect.facebook.net/en_US/sdk.js';
+        scriptElement.id = 'facebook-jssdk';
 
-    scriptElement.onload = () => {
-        FB.init({
-          appId: scriptData.appId,
-          status: scriptData.status,
-          xfbml: scriptData.xfbml,
-          version: 'v6.0'
-        });
-        FB.AppEvents.logPageView();
-    };
+        scriptElement.onload = () => {
+          FB.init({
+            appId: scriptData.appId,
+            status: scriptData.status,
+            xfbml: scriptData.xfbml,
+            version: 'v6.0'
+          });
+          FB.AppEvents.logPageView();
+        };
 
-    scriptElement.onerror = (error: any) => {
-        console.log("Couldn't Facebook script: ", scriptElement.src, error);
-    };
+        scriptElement.onerror = (error) => {
+          console.log("Couldn't initialise Facebook SDK script: ", scriptElement.src, error);
+          return;
+        };
 
-    appRoot.parentNode.insertBefore(scriptElement, appRoot);
+        appRoot.parentNode.insertBefore(scriptElement, appRoot);
+        this.sdkInitialised.next(true);
+        console.log('Facebook SDK Initialised!');
+      }
+      catch (error) {
+        console.error('Failed to add Facebook SDK script: ', error);
+        this.sdkInitialised.next(false);
+      }
+    }
+    else{
+      console.log('Failed: Facebook SDK Already Initialised!');
+    }
   }
 }

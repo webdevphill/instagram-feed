@@ -14,8 +14,8 @@ export class FacebookSdkComponent implements OnInit {
   
   fbSdkData: FacebookSdk = {
     appId: '283054399382020',
-    status: true,
-    xfbml: true
+    status: false, // Checks users login status on load, can reduce overhead is using Facebook Login
+    xfbml: true // Search site for social plugins added using XFBML, slows down load times.
 }
   constructor(private fbSdkService: FacebookSdkService, private formBuilder: FormBuilder) {
     this.sdkForm = this.formBuilder.group(this.fbSdkData);

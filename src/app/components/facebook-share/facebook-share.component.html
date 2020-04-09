@@ -1,6 +1,6 @@
 <div class="settings-form">
     <h2>Facebook Share Meta Tag Settings</h2>
-    <form [formGroup]="shareForm" (ngSubmit)="onSubmit(shareForm.value)">
+    <form [formGroup]="metaForm" (ngSubmit)="onMetaSubmit(metaForm.value)">
         <div class="input-group">
             <label for="fbAppId">
                 Facebook App Id
@@ -37,12 +37,18 @@
             </label>
             <input id="ogImageAlt" type="text" formControlName="ogImageAlt">
         </div>
-        <!-- <h2>Share Button Settings</h2>
+        <button class="button" type="submit">Set Meta Data</button>
+    </form>
+    <form [formGroup]="shareBtnForm" (ngSubmit)="onBtnSubmit(shareBtnForm.value)">
+        <h2>Share Button Settings</h2>
         <div class="input-group">
             <label for="dataShare">
                 Data Share
             </label>
-            <input id="dataShare" type="text" formControlName="dataShare">
+            <select id="dataShare" formControlName="dataShare">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
         </div>
         <div class="input-group">
             <label for="dataWidth">
@@ -52,11 +58,41 @@
         </div>
         <div class="input-group">
             <label for="dataShowFaces">
-                Data Show Faces
+                Show Faces
             </label>
-            <input id="dataShowFaces" type="text" formControlName="dataShowFaces">
-        </div> -->
-        <button class="button" type="submit">Set Meta Data</button>
+            <select id="dataShowFaces" formControlName="dataShowFaces">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="dataSize">
+                Size
+            </label>
+            <select id="dataSize" formControlName="dataSize">
+                <option value="small">Small</option>
+                <option value="large">Large</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="dataLayout">
+                Layout
+            </label>
+            <select id="dataLayout" formControlName="dataLayout">
+                <option value="standard">Standard</option>
+                <option value="box_count">Box Count</option>
+                <option value="button_count">Button Count</option>
+                <option value="button">Button</option>
+            </select>
+        </div>
+        <button class="button" type="submit">Set Buttons</button>
+        <button (click)="onReloadButton()">Reload Buttons</button>
     </form>
-    <div *ngIf="fbShareData.showShare" class="fb-like" [attr.data-share]="fbShareData.dataShare" [attr.data-width]="fbShareData.dataWidth" [attr.data-show-faces]="fbShareData.dataShowFaces"></div>
+    <div class="fb-like" 
+    [attr.data-share]="fbShareBtnData.dataShare"
+    [attr.data-width]="fbShareBtnData.dataWidth"
+    [attr.data-show-faces]="fbShareBtnData.dataShowFaces"
+    [attr.data-layout]="fbShareBtnData.dataLayout"
+    [attr.data-size]="fbShareBtnData.dataSize"
+    [attr.data-href]="fbShareBtnData.dataHref"></div>
 </div>

@@ -1,13 +1,11 @@
+// https://developers.facebook.com/docs/plugins/like-button/
+// https://developers.facebook.com/docs/plugins/share-button
+
 export interface FacebookShare {
-    fbAppId?: string;
-    ogUrl?: string;
-    ogType?: string;
-    ogTitle?: string;
-    ogDescription?: string;
-    ogImage?: string;
-    ogImageAlt?: string;
     dataShare?: boolean;
-    dataWidth?: number;
+    dataWidth?: string;
     dataShowFaces?: boolean;
-    showShare?: boolean;
+    dataSize?: string; // small, large
+    dataLayout?: string; // standard, box_count, button_count, button
+    dataHref?: string;
 }
