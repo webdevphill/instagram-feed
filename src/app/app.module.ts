@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { InstagramFeedComponent } from './components/instagram-feed/instagram-feed.component';
 import { FacebookSdkComponent } from './components/facebook-sdk/facebook-sdk.component';
 import { FacebookShareComponent } from './components/facebook-share/facebook-share.component';
+import { FacebookComponent } from './components/facebook/facebook.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InstagramFeedComponent,
     FacebookSdkComponent,
-    FacebookShareComponent
+    FacebookShareComponent,
+    FacebookComponent
   ],
   imports: [
     BrowserModule,
